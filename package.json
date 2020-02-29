@@ -1,0 +1,66 @@
+{
+  "name": "react-redux-refactoring-thunkify-patterns",
+  "version": "1.0.0",
+  "description": "A demo project prepared to demonstrate WithInit WithProps and Thunkify for Fenders@Melbourne",
+  "main": "index.js",
+  "scripts": {
+    "server": "npx babel-node ./server/index",
+    "test": "jest --watch",
+    "start": "webpack  --watch --config ./config/webpack.dev.client.config.js & webpack-dev-server --config ./config/webpack.dev.client.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desphilboy/rrr-t-p.git"
+  },
+  "keywords": [
+    "WithInit",
+    "WithProps",
+    "Thunkify",
+    "Thunk",
+    "HOCs",
+    "React",
+    "Redux"
+  ],
+  "author": "Iman Dezfuly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/desphilboy/rrr-t-p/issues"
+  },
+  "homepage": "https://github.com/desphilboy/rrr-t-p#readme",
+  "devDependencies": {
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^25.1.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.6",
+    "@babel/preset-react": "^7.8.3",
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "history": "^4.10.1",
+    "moment-timezone": "^0.5.28",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-spinners": "^0.8.0",
+    "redux": "^4.0.5",
+    "redux-actions": "^2.6.5",
+    "redux-form": "^8.3.0",
+    "redux-thunk": "^2.3.0"
+  }
+}
