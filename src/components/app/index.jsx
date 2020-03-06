@@ -6,16 +6,13 @@ import Wellcome from '../wellcome';
 import Details from '../details';
 import { appHistory } from '../../history.js';
 
-
 export const App = () => (
   <Provider store={store}>
     <Router>
       <Route exact path="/">
         <Wellcome />
       </Route>
-      <Route path="/profile">
-        <Details />
-      </Route>
+      <Route path="/profile" component={Details} />
     </Router>
   </Provider>
 );

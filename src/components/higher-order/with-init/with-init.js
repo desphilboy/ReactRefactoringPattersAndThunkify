@@ -1,19 +1,14 @@
-import React, { Component } from "react";
-import { getComponentName, isValidFn } from "../utils.js";
+import React, { Component } from 'react';
+import { getComponentName, isValidFn } from '../utils.js';
 
 export function withInit(init, callInitLogic, inProgressLogic, Spinner) {
 	return BaseComponent =>
 		class extends Component {
 			static getDerivedStateFromProps(props, state) {
 				const callInit = !!(
-					callInitLogic &&
-					(typeof callInitLogic === "function"
-						? callInitLogic(props)
-						: callInitLogic)
+					callInitLogic && (typeof callInitLogic === 'function' ? callInitLogic(props) : callInitLogic)
 				);
-				const inProgress = !!(isValidFn(inProgressLogic)
-					? inProgressLogic(props)
-					: inProgressLogic);
+				const inProgress = !!(isValidFn(inProgressLogic) ? inProgressLogic(props) : inProgressLogic);
 
 				if (callInit && !inProgress) {
 					if (isValidFn(init)) {
