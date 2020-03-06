@@ -15,7 +15,7 @@ server.get('/type/:name', async (req, res) => {
 
 server.get('/info/:type', async (req, res) => {
   console.log('got request for info with type=', req.params.name);
-  await setTimeout(() => res.send({ status: 200, info: animals[req.params.type] || {} }), 3000);
+  await setTimeout(() => res.send({ status: 200, info: animals[req.params.type] || {} }), 300);
 });
 
 server.get('/', (req, res) => {

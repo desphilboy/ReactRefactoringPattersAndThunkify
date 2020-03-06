@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 /**
  * @param { object or function }	dependencyMap	maps dependencies into sideEffec parameter names. If it is
  * a function will be called with Redux state and dispatch if non-function object will be added to
@@ -11,8 +12,8 @@
  *
  * @params { function }		dispatch and getState this will be provided by thunk middleware from Redux store
  */
-export const thunkify = dependencyMap => sideEffect => params => (dispatch, getState) =>
-	sideEffect({
+export const thunkify = dependencyMap => sideEffect => params => async (dispatch, getState) =>
+	await sideEffect({
 		...params,
-		...(typeof dependencyMap === 'function' ? dependencyMap(dispatch, getState) : dependencyMap)
+		...(typeof dependencyMap === 'function' ? dependencyMap(dispatch, getState) : dependencyMap),
 	});

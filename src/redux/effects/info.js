@@ -1,30 +1,35 @@
 import axios from 'axios';
 import { infoStart, infoSuccess, infoError } from '../reducers/info.reducer.js';
 import { isValidCache } from '../helpers.js';
+import thunkify from '../thunkification';
 
-export const resolveInfo = (type) => async function (dispatch, getState) {
-  dispatch(infoStart(type));
-
-  const { info: { animals } } = getState();
-  console.log('animals >>>>>>',animals);
-  const cachedResult = animals.find(animal => animal.petType === type);
-
-  console.log('cached result>>>>>', cachedResult);
-
-  if(isValidCache(cachedResult)) {
-    setTimeout(() => {
-      dispatch(infoSuccess({ info: cachedResult }));
-    }, 100);
+const fetchInfo = async ({ infoStart, infoError, infoSuccess, cachedResult, isValidCache, petType }) => {
+  infoStart(petType);
+  if (isValidCache(cachedResult(petType))) {
+    infoSuccess({ info: cachedResult(petType) });
     return;
   }
-
   try {
-    console.log('type>>>>', type);
-    const response = await axios.get(`http://localhost:3010/info/${type}`);
-    console.log(response);
-    dispatch(infoSuccess(response.data));
+    const response = await axios.get(`http://localhost:3010/info/${petType}`);
+    infoSuccess(response.data);
   } catch (err) {
     console.log(err);
-    dispatch(infoError(err));
+    infoError(err);
   }
 };
+
+const infoMap = (dispatch, getState) => ({
+  infoStart: type => dispatch(infoStart(type)),
+  infoError: err => dispatch(infoError(error)),
+  infoSuccess: res => dispatch(infoSuccess(res)),
+  cachedResult: type => {
+    const {
+      info: { animals },
+    } = getState();
+    const cachedResult = animals.find(animal => animal.petType === type);
+    return cachedResult;
+  },
+  isValidCache,
+});
+
+export const resolveInfo = thunkify(infoMap)(fetchInfo);
