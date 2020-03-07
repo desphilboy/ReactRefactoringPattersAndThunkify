@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime';
  * with all the parameters including mapped ones and the third param.
  *
  * @param { object }		params 			additional parameters passed by caller of the effect. the params
- * will be passed to the sideEffect funcion as is
+ * will be passed to the sideEffect funcion as is ( it is expected to be an object )
  *
  * @params { function }		dispatch and getState this will be provided by thunk middleware from Redux store
  */

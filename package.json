@@ -6,6 +6,7 @@
   "scripts": {
     "server": "npx babel-node ./server/index",
     "test": "jest --watch",
+    "coverage": "jest --coverage",
     "start": "webpack  --watch --config ./config/webpack.dev.client.config.js & webpack-dev-server --config ./config/webpack.dev.client.config.js"
   },
   "repository": {
@@ -68,11 +69,26 @@
   },
   "jest": {
     "verbose": true,
+    "collectCoverage": true,
     "testMatch": [
-      "**/**.spec.jest.**"
+      "**/**.spec.jest.{js,jsx}",
+      "!**/**.snap"
+    ],
+    "coverageDirectory": "client-dist/coverage",
+    "collectCoverageFrom": [
+      "**/**.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/client-dist/**",
+      "!**/config/**"
     ],
     "setupFilesAfterEnv": [
       "./config/testSetup.js"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover"
     ]
   }
 }

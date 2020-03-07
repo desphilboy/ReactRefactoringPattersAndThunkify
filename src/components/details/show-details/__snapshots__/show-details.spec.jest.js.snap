@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowDetails views ShowDetailsBody match the snapshot with invalid params 1`] = `ShallowWrapper {}`;
+
+exports[`ShowDetails views ShowDetailsBody match the snapshot with params 1`] = `ShallowWrapper {}`;
+
+exports[`ShowDetails views TopSpinner match the snapshot 1`] = `ShallowWrapper {}`;
